@@ -25,6 +25,11 @@ body {
 a {
   text-decoration: none;
   color: var(--color-white);
+  transition: color .2s;
+}
+
+a:hover {
+  color: var(--color-white) !important;
 }
 
 code {
@@ -42,6 +47,7 @@ button {
   background-color: var(--color-blue);
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, 
   var(--color-blue-secondary) 0%, var(--color-blue) 50%, var(--color-blue-secondary) 100%);
+  z-index: 10;
 }
 
 header {

@@ -8,14 +8,7 @@ import View from './view';
 const Area = styled.div`
     width: 100%;
     height: auto;
-`;
-
-const Title = styled.span`
-    color: var(--color-gray);
-    font-size: 16px;
-    position: absolute;
-    margin-left: 20px;
-    margin-top: 20px;
+    position: relative;
 `;
 
 const Back = styled.div`
@@ -36,7 +29,6 @@ const Page = () => {
     return (
         <Area>
             <Container width="100%" height="600px">
-                <Title><i className="fa fa-play"></i> TicTacToe</Title>
                 <View />
             </Container>
             <Back>

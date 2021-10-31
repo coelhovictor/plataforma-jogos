@@ -22,6 +22,11 @@ const Cards = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 80px;
+
+    @media(max-width: 800px) {
+        grid-gap: 40px;
+    }
+
     /*margin-right: 5%;
 
     @media(max-width: 1200px) {

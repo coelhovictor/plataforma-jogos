@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+
+import GameOptions from '../../components/game-options';
+
 import { 
     Area,
     Container,
@@ -24,6 +27,15 @@ const View = () => {
     const [tasks, setTasks] = useState([]);
 
     const startGame = () => {
+        if(status != 0) return;
+
+        reset();
+        sequence(0);
+    }
+
+    const restart = () => {
+        if(status == 0) return;
+
         reset();
         sequence(0);
     }
@@ -149,47 +161,54 @@ const View = () => {
     }, []);
 
     return (
-        <Area>
-            <Container>
-                <Header>
-                    {status == 0 && "AGUARDANDO"}
-                    {status == 1 && "DECORANDO"}
-                    {status == 2 && "VAI!"}
-                    {status == 3 && "ERROU!!"}
-                    {status == 4 && "ACERTOU!!"}
-                </Header>
-                <Options>
-                    {options.map((item, key) =>
-                        <div key={key}>
-                            {currentBless == key && <Option bless={true} onClick={() => bet(key)}>{item}</Option>}
-                            {currentBless != key && <Option bless={false} onClick={() => bet(key)}>{item}</Option>}
-                        </div>
-                    )}
-                </Options>
-                <Footer>
-                    <Buttons>
-                        {status != 0 && 
-                            <>
-                                <Button inative={true}><i className="fa fa-play"></i></Button>
-                                <Button onClick={() => startGame()}><i className="fa fa-refresh"></i></Button>
-                                <Button onClick={() => reset()}><i className="fa fa-stop"></i></Button>
-                            </>
-                        }
-                        {status == 0 && 
-                            <>
-                                <Button onClick={() => startGame()}><i className="fa fa-play"></i></Button>
-                                <Button inative={true}><i className="fa fa-refresh"></i></Button>
-                                <Button inative={true}><i className="fa fa-stop"></i></Button>
-                            </>
-                        }
-                    </Buttons>
-                    <Score>
-                        <b>{score}</b>
-                        <span>SCORE</span>
-                    </Score>
-                </Footer>
-            </Container>
-        </Area>
+        <>
+            <GameOptions 
+                title="Repetição" 
+                play={()=>startGame()}
+                restart={()=>restart()}
+                stop={()=>reset()}/>
+            <Area>
+                <Container>
+                    <Header>
+                        {status == 0 && "AGUARDANDO"}
+                        {status == 1 && "DECORANDO"}
+                        {status == 2 && "VAI!"}
+                        {status == 3 && "ERROU!!"}
+                        {status == 4 && "ACERTOU!!"}
+                    </Header>
+                    <Options>
+                        {options.map((item, key) =>
+                            <div key={key}>
+                                {currentBless == key && <Option bless={true} onClick={() => bet(key)}>{item}</Option>}
+                                {currentBless != key && <Option bless={false} onClick={() => bet(key)}>{item}</Option>}
+                            </div>
+                        )}
+                    </Options>
+                    <Footer>
+                        <Buttons>
+                            {status != 0 && 
+                                <>
+                                    <Button inative={true}><i className="fa fa-play"></i></Button>
+                                    <Button onClick={() => startGame()}><i className="fa fa-refresh"></i></Button>
+                                    <Button onClick={() => reset()}><i className="fa fa-stop"></i></Button>
+                                </>
+                            }
+                            {status == 0 && 
+                                <>
+                                    <Button onClick={() => startGame()}><i className="fa fa-play"></i></Button>
+                                    <Button inative={true}><i className="fa fa-refresh"></i></Button>
+                                    <Button inative={true}><i className="fa fa-stop"></i></Button>
+                                </>
+                            }
+                        </Buttons>
+                        <Score>
+                            <b>{score}</b>
+                            <span>SCORE</span>
+                        </Score>
+                    </Footer>
+                </Container>
+            </Area>
+        </>
     );
 };
 
