@@ -36,7 +36,7 @@ const Page = () => {
     return (
         <Area>
             <Container width="100%" height="600px">
-                <Title>Repetição</Title>
+                <Title><i className="fa fa-play"></i> Repetição</Title>
                 <View />
             </Container>
             <Back>

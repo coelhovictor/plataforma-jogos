@@ -38,7 +38,7 @@ const Component = ({name, image, route}) => {
     return (
             <Container width="auto" height="250px">
                 <Link to={route}>
-                    <Title>{name}</Title>
+                    <Title><i className="fa fa-play"></i> {name}</Title>
                     <Body style={{ backgroundImage: `url(${image})` }}>
                     </Body>
                     <Play>

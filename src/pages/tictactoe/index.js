@@ -36,7 +36,7 @@ const Page = () => {
     return (
         <Area>
             <Container width="100%" height="600px">
-                <Title>TicTacToe</Title>
+                <Title><i className="fa fa-play"></i> TicTacToe</Title>
                 <View />
             </Container>
             <Back>
