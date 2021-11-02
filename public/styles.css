@@ -10,15 +10,18 @@
   --color-white: #EFEFEF;
   --color-gray: #9f9f9f;
   --color-dark-blue: #1B1A24;
-  --color-dark: #18181D;
+  --color-dark: #292929;
+
+  color-scheme: dark;
 }
 
 body {
+  position: relative;
   margin: 0;
   font-family: 'OCR A Std', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #151420;
+  background-color: #201f1f;
   color: var(--color-white);
 }
 
@@ -44,9 +47,9 @@ button {
 .bar {
   width: 100%;
   height: 15px;
-  background-color: var(--color-blue);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, 
-  var(--color-blue-secondary) 0%, var(--color-blue) 50%, var(--color-blue-secondary) 100%);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   z-index: 10;
 }
 
@@ -54,42 +57,90 @@ header {
   width: 100%;
   height: auto;
   padding-top: 55px;
-  padding-bottom: 55px;
+  padding-bottom: 35px;
+  margin-bottom: 40px;
   text-align: center;
+  border-bottom: 1px solid #3d3d3d;
 }
 
-header span {
+header span, b {
   font-size: 42px;
 }
 
 header b {
-  font-size: 42px;
+  margin-right: 15px;
 }
 
 main {
   width: 1100px;
-  min-height: 70vh;
   margin: 0 auto;
+  margin-bottom: 50px;
+  min-height: calc(100vh - 235px - 70px);
 }
 
 footer {
   width: 100%;
-  height: auto;
-  padding-top: 55px;
-  padding-bottom: 25px;
-  text-align: center;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 10px;
 }
 
 footer span {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--color-gray);
+}
+
+.animation {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  background-image: url('./imgs/stars.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: .3;
+  z-index: -1;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient-color {
+  0% {
+    border-color: #ee7752;
+  }
+  25% {
+    border-color: #e73c7e;
+  }
+  50% {
+    border-color: #23a6d5;
+  }
+  70% {
+    border-color: #23d5ab;
+  }
+  100% {
+    border-color: #ee7752;
+  }
 }
 
 @media (max-width:1200px) {
   main {
     width: 900px;
   }
-  header span {
+  header span, b {
     font-size: 32px;
   }
 } 
@@ -104,16 +155,16 @@ footer span {
   main {
     width: 90%;
   }
-  header span {
+  header span, b {
     font-size: 26px;
   }
 }  
 
 @media (max-width:800px) {
-  header span {
+  header span, b {
     font-size: 22px;
   }
-  footer span {
-    font-size: 12px;
+  header b {
+    margin-right: 0px;
   }
 }  

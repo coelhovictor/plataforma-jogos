@@ -71,9 +71,6 @@ export const Option = styled.button`
     cursor: pointer;
     transition: background-color .1s;
 
-    :hover {
-        background-color: #4554a0;
-    }
     :active {
         border-left: 2px solid #040713;
         border-bottom: 2px solid #040713;
@@ -112,9 +109,6 @@ export const Button = styled.button`
     cursor: ${(props) => props.inative ? 'not-allowed' : 'pointer'};;
     transition: background-color .2s;
 
-    :hover {
-        background-color: ${(props) => props.inative ? 'gray' : '#4554a0'};1a1a1a
-    }
     :active {
         border-left: 2px solid ${(props) => props.inative ? '#1a1a1a' : '#040713'};
         border-bottom: 2px solid ${(props) => props.inative ? '#1a1a1a' : '#040713'};

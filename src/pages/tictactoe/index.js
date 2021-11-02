@@ -28,7 +28,7 @@ const Page = () => {
 
     return (
         <Area>
-            <Container width="100%" height="600px">
+            <Container width="100%" height="600px" isstatic={true}>
                 <View />
             </Container>
             <Back>

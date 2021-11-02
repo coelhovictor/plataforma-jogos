@@ -14,37 +14,6 @@ export const Container = styled.div`
     height: auto;
 `;
 
-export const Header = styled.div`
-    width: 100%;
-    height: 50px;
-    border-radius: 10px;
-    margin-bottom: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: grid;
-    grid-template-columns: .45fr .45fr;
-    grid-template-rows: 1fr;
-    align-items: center;
-    justify-content: center;
-    grid-gap: 20px;
-    background-color: var(--color-dark);
-`;
-
-export const Indicator = styled.div`
-    width: 100%;
-    height: 70%;
-    line-height: 40px;
-    margin: 0 auto;
-    background-color: var(--color-dark-blue);
-    border-radius: 10px;
-    border-bottom: 3px solid ${(props) => props.active ? 'var(--color-blue)' : '#3e3e3e'};
-
-    span, b {
-        font-size: 24px;
-    }
-
-`;
-
 export const Body = styled.table`
     width: auto;
     height: auto;
@@ -61,17 +30,63 @@ export const Row = styled.tr`
     }
 `;
 
-export const Option = styled.td`
+export const Column = styled.td`
     border: 7px solid var(--color-dark-blue); 
     width: 90px;
     height: 90px;
     text-align: center;
-    font-size: 48px;
 
     :first-child {
         border-left: 0;
     }
     :last-child {
         border-right: 0;
+    }
+`;
+
+export const Option = styled.span`
+    font-size: 48px;
+`;
+
+export const Indicator = styled.div`
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-bottom: 40px;
+
+    span, b {
+        font-size: 16px;
+        color: var(--color-gray);
+    }
+
+    b {
+        color: var(--color-white);
+    }
+`;
+
+export const Score = styled.div`
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin-top: 40px;
+
+    div {
+        width: 33.3%;
+        height: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    span, b {
+        font-size: 14px;
+        color: var(--color-gray);
+    }
+
+    b {
+        font-size: 20px;
+        color: var(--color-white);
+        margin-bottom: 5px;
     }
 `;
