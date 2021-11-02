@@ -6,6 +6,7 @@ export const Area = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     background: linear-gradient(to right, #0f2027, #1d4236, #0f2027);
 `;
 
@@ -31,7 +32,7 @@ export const Row = styled.tr`
 `;
 
 export const Column = styled.td`
-    border: 7px solid var(--color-dark-blue); 
+    border: 7px solid var(--color-dark); 
     width: 90px;
     height: 90px;
     text-align: center;

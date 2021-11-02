@@ -1,23 +1,14 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 import Container from '../../components/container';
+import Back from '../../components/back';
 import View from './view';
 
 const Area = styled.div`
     width: 100%;
     height: auto;
     position: relative;
-`;
-
-const Back = styled.div`
-    width: 100%;
-    height: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-    font-size: 14px;
 `;
 
 const Page = () => {
@@ -28,12 +19,10 @@ const Page = () => {
 
     return (
         <Area>
-            <Container width="100%" height="600px" isstatic={true}>
+            <Container width="100%" height="670px" isstatic={true}>
                 <View />
             </Container>
-            <Back>
-                <Link to="/" style={{ color: 'var(--color-gray)' }}>Voltar para o Início</Link>
-            </Back>
+            <Back />
         </Area>
     );
 };

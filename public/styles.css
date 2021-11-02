@@ -4,13 +4,18 @@
 }
 
 :root {
-  --color-blue: #00CBFF;
-  --color-blue-secondary: #00a7d2;
-  --color-blue-three: #006781;
+  --color-blue: #23a6d5;
+  --color-light-blue: #00CBFF;
+  --color-light-orange: #ee7752;
+  --color-light-green: #23d5ab;
+  --color-light-pink: #e73c7e;
+  --color-dark-blue: #006781;
   --color-white: #EFEFEF;
   --color-gray: #9f9f9f;
-  --color-dark-blue: #1B1A24;
-  --color-dark: #292929;
+  --color-dark-gray: #3d3d3d;
+  --color-dark: #201f1f;
+  --color-light-dark: #292929;
+  --color-black: #000;
 
   color-scheme: dark;
 }
@@ -21,7 +26,7 @@ body {
   font-family: 'OCR A Std', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #201f1f;
+  background-color: var(--color-dark);
   color: var(--color-white);
 }
 
@@ -47,7 +52,8 @@ button {
 .bar {
   width: 100%;
   height: 15px;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, var(--color-light-orange), 
+    var(--color-light-pink), var(--color-blue), var(--color-light-green));
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   z-index: 10;
@@ -60,7 +66,7 @@ header {
   padding-bottom: 35px;
   margin-bottom: 40px;
   text-align: center;
-  border-bottom: 1px solid #3d3d3d;
+  border-bottom: 1px solid var(--color-dark-gray);
 }
 
 header span, b {
@@ -80,17 +86,29 @@ main {
 
 footer {
   width: 100%;
-  height: 70px;
+  height: auto;
+  padding: 30px 0px 25px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  line-height: 10px;
+  line-height: 12px;
+  background-color: var(--color-light-dark);
 }
 
 footer span {
   font-size: 14px;
   color: var(--color-gray);
+}
+
+footer a {
+  font-size: 14px;
+  color: var(--color-gray);
+}
+
+footer .version {
+  opacity: .4;
+  font-size: 12px;
 }
 
 .animation {
@@ -120,19 +138,19 @@ footer span {
 
 @keyframes gradient-color {
   0% {
-    border-color: #ee7752;
+    border-color: var(--color-light-orange);
   }
   25% {
-    border-color: #e73c7e;
+    border-color: var(--color-light-pink);
   }
   50% {
-    border-color: #23a6d5;
+    border-color: var(--color-blue);
   }
   70% {
-    border-color: #23d5ab;
+    border-color: var(--color-light-green);
   }
   100% {
-    border-color: #ee7752;
+    border-color: var(--color-light-orange);
   }
 }
 
@@ -156,15 +174,13 @@ footer span {
     width: 90%;
   }
   header span, b {
-    font-size: 26px;
-  }
-}  
-
-@media (max-width:800px) {
-  header span, b {
     font-size: 22px;
   }
   header b {
     margin-right: 0px;
+  }
+  header {
+    padding-top: 45px;
+    padding-bottom: 25px;
   }
 }  

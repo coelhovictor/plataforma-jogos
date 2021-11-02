@@ -17,6 +17,7 @@ import {
 const View = () => {
 
     const [options] = useState(["1", "B", "2", "D", "5", "F", "7", "H", "9"]);
+    const [settings] = useState([]);
 
     const [status, setStatus] = useState(0);
     const [locked, setLocked] = useState(true);

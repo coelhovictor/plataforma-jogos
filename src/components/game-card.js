@@ -27,7 +27,7 @@ const Play = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-dark);
+    background-color: var(--color-light-dark);
 `;
 
 const PlayText = styled.span`

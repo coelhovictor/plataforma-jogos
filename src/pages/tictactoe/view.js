@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import GameOptions from '../../components/game-options';
+import Options from '../../components/options';
 
 import { 
     Area,
@@ -30,22 +31,49 @@ const View = () => {
         [0, 4, 8],
         [2, 4, 6]
     ]);
+    const [settings] = useState([
+        {
+            display: "Símbolo",
+            current: 0,
+            options: [
+                { display: "X", value: 0 },
+                { display: "O", value: 1 }
+            ]
+        },
+        {
+            display: "Começar jogando",
+            current: 1,
+            options: [
+                { display: "Sim", value: 0 },
+                { display: "Não", value: 1 }
+            ]
+        }
+    ]);
 
     const [status, setStatus] = useState(0);
     const [tasks, setTasks] = useState([]);
     const [scorePlayer, setScorePlayer] = useState(0);
     const [scoreCPU, setScoreCPU] = useState(0);
     const [scoreDraw, setScoreDraw] = useState(0);
+    const [showOptions, setShowOptions] = useState(false);
 
     const startGame = () => {
         if(status != 0) return;
 
         reset();
+        if(startPlaying() == 0) {
+            setStatus(2); 
+            return;
+        }
         cpu();
     }
 
     const restart = () => {
         reset();
+        if(startPlaying() == 0) {
+            setStatus(2); 
+            return;
+        }
         cpu();
     }
 
@@ -73,7 +101,7 @@ const View = () => {
     const player = (x, y) => {
         if(status != 2) return;
         if(options[x][y] != "N") return;
-        var winner = bet(x, y, "X");
+        var winner = bet(x, y, symbol() == 0 ? "X" : "O");
         if(winner != 0) {
             finish(winner);
             return;
@@ -86,7 +114,7 @@ const View = () => {
 
         var timer = setInterval(() => {
             var index = chooseIndex();
-            var winner = bet(index[0], index[1], "O");
+            var winner = bet(index[0], index[1], symbol() != 0 ? "X" : "O");
             if(winner != 0) {
                 finish(winner);
             } else {
@@ -101,32 +129,32 @@ const View = () => {
     const chooseIndex = () => {
         var target = [];
 
-        var selectX = [];
-        var selectO = [];
+        var selectGood = [];
+        var selectBad = [];
         for(var as in checks) {
             var value = checks[as];
-            var countO = 0, countX = 0;
+            var optionGood = 0, optionBad = 0;
             for(var index in value) {
                 var result = transform(value[index]);
                 var option = options[result[0]][result[1]];
-                if(option == "O") countO++;
-                if(option == "X") countX++;
+                if(option == "O") optionGood++;
+                if(option == "X") optionBad++;
             }
-            if(countX > 0 && countO == 0) {
-                if(selectX.length == 0 || selectX[0] < countX) selectX = [countX, value];
+            if(optionGood > 0 && optionBad == 0) {
+                if(selectGood.length == 0 || selectGood[0] < optionGood) selectGood = [optionGood, value];
             }
-            if(countO > 0 && countX == 0) {
-                if(selectO.length == 0 || selectO[0] < countO) selectO = [countO, value];
+            if(optionBad > 0 && selectGood == 0) {
+                if(selectBad.length == 0 || selectBad[0] < optionBad) selectBad = [optionBad, value];
             }
         }
 
         var select = null;
 
-        if(selectO.length > 0) {
-            if(selectX.length > 0 && selectX[0] > 1 && selectX[0] > selectO[0]) {
-                select = selectX[1];
+        if(selectGood.length > 0) {
+            if(selectBad.length > 0 && selectBad[0] > 1 && selectBad[0] > selectGood[0]) {
+                select = selectBad[1];
             } else {
-                select = selectO[1];
+                select = selectGood[1];
             }
         }
 
@@ -174,8 +202,8 @@ const View = () => {
                 if(option == "O") countO++;
                 if(option == "N") countN++;
             }
-            if(countX >= 3) return 1;
-            if(countO >= 3) return 2;
+            if(countX >= 3) return symbol() == 0 ? 1 : 2;
+            if(countO >= 3) return symbol() == 1 ? 1 : 2;
         }
 
         if(countN == 0) return 3;
@@ -225,6 +253,9 @@ const View = () => {
         tasks.push(timer);
     }
 
+    const symbol = () => { return settings[0].current; }
+    const startPlaying = () => { return settings[1].current; }
+
     useEffect(() => {
         setScorePlayer(0);
         setScoreCPU(0);
@@ -234,12 +265,13 @@ const View = () => {
 
     return (
         <>
-            <GameOptions 
+            <Area>
+                <GameOptions 
                     title="TicTacToe"
                     play={()=>startGame()}
                     restart={()=>restart()}
-                    stop={()=>reset()}/>
-            <Area>
+                    stop={()=>reset()}
+                    options={()=>setShowOptions(true)}/>
                 <Container>
                     <Indicator>
                         {status == 0 && <span>Aguardando iniciar</span>}
@@ -280,6 +312,11 @@ const View = () => {
                         </div>
                     </Score>
                 </Container>
+                <Options 
+                    showStatus={showOptions} 
+                    hide={()=>setShowOptions(false)} 
+                    options={settings}
+                    status={status}/>
             </Area>
         </>
     );

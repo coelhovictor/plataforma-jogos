@@ -20,7 +20,7 @@ import styled, { keyframes } from "styled-components";
 `;*/
 
 const Container = styled.div`
-    background-color: var(--color-dark-blue);
+    background-color: var(--color-dark);
     border-bottom: 3px solid var(--color-blue);
     border-radius: 5px;
     animation: gradient-color 15s ease infinite;

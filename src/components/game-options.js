@@ -9,6 +9,7 @@ const Container = styled.div`
     padding-top: 15px;
     justify-content: space-between;
     position: absolute;
+    top: 0; left: 0;
 `;
 
 const Title = styled.span`
@@ -46,15 +47,16 @@ const Buttons = styled.nav`
     }
 `;
 
-const Component = ({title, play, restart, stop}) => {
+const Component = ({title, play, restart, stop, options}) => {
     return (
         <Container>
-            <Title><i className="fa fa-play"></i> {title}</Title>
+            <Title title={title}><i className="fa fa-play"></i> {title}</Title>
             <Buttons>
                 <ul>
-                    <li onClick={play}><i className="fa fa-play"></i></li>
-                    <li onClick={restart}><i className="fa fa-refresh"></i></li>
-                    <li onClick={stop}><i className="fa fa-stop"></i></li>
+                    <li onClick={play} title="Iniciar"><i className="fa fa-play"></i></li>
+                    <li onClick={restart}  title="Reiniciar"><i className="fa fa-refresh"></i></li>
+                    <li onClick={stop}  title="Parar"><i className="fa fa-stop"></i></li>
+                    {options && <li onClick={options} title="Opções"><i className="fa fa-bars"></i></li>}
                 </ul>
             </Buttons>
         </Container>
