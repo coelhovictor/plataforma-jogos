@@ -47,6 +47,7 @@ export const Column = styled.td`
 
 export const Option = styled.span`
     font-size: 48px;
+    font-family: 'Arial', sans-serif;
 `;
 
 export const Indicator = styled.div`

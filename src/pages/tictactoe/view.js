@@ -288,7 +288,7 @@ const View = () => {
                                     {options[key].map((item, itemKey) =>
                                         <Column onClick={()=>player(key, itemKey, 1)} key={itemKey}>
                                             {item == "X"
-                                                && <Option><i className="fa fa-times"></i></Option>}
+                                                && <Option><i className="fa fa-times" style={{ fontSize: '60px' }}></i></Option>}
                                             {item == "O"
                                                 && <Option><i className="far fa-circle"></i></Option>}
                                         </Column>
