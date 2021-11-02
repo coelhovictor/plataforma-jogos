@@ -9,8 +9,6 @@ import {
     Options,
     Option,
     Footer,
-    Buttons,
-    Button,
     Score
 } from './styles';
 
@@ -22,6 +20,7 @@ const View = () => {
     const [status, setStatus] = useState(0);
     const [locked, setLocked] = useState(true);
     const [score, setScore] = useState(0);
+    const [scoreRecorde, setScoreRecord] = useState(0);
     const [currentSequence, setCurrentSequence] = useState([]);
     const [currentBetIndex, setCurrentBetIndex] = useState(0);
     const [currentBless, setCurrentBless] = useState(-1);
@@ -136,7 +135,9 @@ const View = () => {
     }
 
     const win = () => {
-        setScore(score + 1);
+        let nextRecord = score + 1;
+        setScore(nextRecord);
+        if(nextRecord > scoreRecorde) setScoreRecord(nextRecord);
         setLocked(true);
         setStatus(4);
         var timer = setInterval(() => {
@@ -158,6 +159,7 @@ const View = () => {
     }
 
     useEffect(() => {
+        setScoreRecord(0);
         reset();
     }, []);
 
@@ -186,25 +188,13 @@ const View = () => {
                         )}
                     </Options>
                     <Footer>
-                        <Buttons>
-                            {status != 0 && 
-                                <>
-                                    <Button inative={true}><i className="fa fa-play"></i></Button>
-                                    <Button onClick={() => startGame()}><i className="fa fa-refresh"></i></Button>
-                                    <Button onClick={() => reset()}><i className="fa fa-stop"></i></Button>
-                                </>
-                            }
-                            {status == 0 && 
-                                <>
-                                    <Button onClick={() => startGame()}><i className="fa fa-play"></i></Button>
-                                    <Button inative={true}><i className="fa fa-refresh"></i></Button>
-                                    <Button inative={true}><i className="fa fa-stop"></i></Button>
-                                </>
-                            }
-                        </Buttons>
                         <Score>
                             <b>{score}</b>
-                            <span>SCORE</span>
+                            <span>ATUAL</span>
+                        </Score>
+                        <Score>
+                            <b>{scoreRecorde}</b>
+                            <span>RECORDE</span>
                         </Score>
                     </Footer>
                 </Container>
