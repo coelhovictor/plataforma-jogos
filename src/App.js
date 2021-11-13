@@ -10,6 +10,7 @@ import NotFound from './pages/404';
 import Repeticao from './pages/repeticao';
 import TicTacToe from './pages/tictactoe';
 import Snake from './pages/snake';
+import CombinarCores from './pages/combinar-cores';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route path="/repeticao" component={Repeticao}/>
           <Route path="/tictactoe" component={TicTacToe}/>
           <Route path="/snake" component={Snake}/>
+          <Route path="/combinar-cores" component={CombinarCores}/>
           <Route component={NotFound}/>
         </Switch>
       </Router>
