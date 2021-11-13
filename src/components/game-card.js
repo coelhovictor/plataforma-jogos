@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Container from './container';
 
@@ -36,16 +35,16 @@ const PlayText = styled.span`
 
 const Component = ({name, image, route}) => {
     return (
-            <Container width="auto" height="250px">
-                <Link to={route}>
-                    <Title><i className="fa fa-play"></i> {name}</Title>
-                    <Body style={{ backgroundImage: `url(${image})` }}>
-                    </Body>
-                    <Play>
-                        <PlayText>JOGAR</PlayText>
-                    </Play>
-                </Link>
-            </Container>
+        <Container width="auto" height="250px">
+            <Link to={route}>
+                <Title><i className="fa fa-play"></i> {name}</Title>
+                <Body style={{ backgroundImage: `url(${image})` }}>
+                </Body>
+                <Play>
+                    <PlayText>JOGAR</PlayText>
+                </Play>
+            </Link>
+        </Container>
     );
 };
 

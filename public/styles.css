@@ -13,10 +13,9 @@
   --color-white: #EFEFEF;
   --color-gray: #9f9f9f;
   --color-dark-gray: #3d3d3d;
-  --color-dark: #201f1f;
+  --color-dark: rgb(32 31 31);
   --color-light-dark: #292929;
   --color-black: #000;
-
   color-scheme: dark;
 }
 
@@ -62,38 +61,38 @@ button {
 header {
   width: 100%;
   height: auto;
-  padding-top: 55px;
-  padding-bottom: 35px;
+  padding-top: 45px;
+  padding-bottom: 25px;
   margin-bottom: 40px;
   text-align: center;
   border-bottom: 1px solid var(--color-dark-gray);
 }
 
 header span, b {
-  font-size: 42px;
+  font-size: 36px;
 }
 
 header b {
-  margin-right: 15px;
+  margin-right: 12px;
 }
 
 main {
   width: 1100px;
   margin: 0 auto;
   margin-bottom: 50px;
-  min-height: calc(100vh - 235px - 70px);
+  min-height: calc(100vh - 220px - 70px);
 }
 
 footer {
   width: 100%;
   height: auto;
-  padding: 30px 0px 25px 0px;
+  padding: 25px 0px 20px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  line-height: 12px;
-  background-color: var(--color-light-dark);
+  line-height: 22px;
+  /*background-color: var(--color-light-dark);*/
 }
 
 footer span {
@@ -182,5 +181,29 @@ footer .version {
   header {
     padding-top: 45px;
     padding-bottom: 25px;
+  }
+}  
+
+@media (max-width:600px) {
+  html {
+    overflow: hidden;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  #game-container {
+    width: 100% !important;
+    height: 98% !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+  #option-exit {
+      display: block !important;
   }
 }  

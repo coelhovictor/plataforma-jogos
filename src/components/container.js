@@ -1,23 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
-
-/*const FlashBorder = keyframes`
-    0% {
-        border-color: var(--color-blue);
-    }
-    25% {
-        border-color: var(--color-blue-secondary);
-    }
-    50% {
-        border-color: var(--color-blue-three);
-    }
-    750% {
-        border-color: var(--color-blue-secondary);
-    }
-    100% {
-        border-color: var(--color-blue);
-    }
-`;*/
+import styled from "styled-components";
 
 const Container = styled.div`
     background-color: var(--color-dark);
@@ -33,9 +15,10 @@ const Container = styled.div`
     }
 `;
 
-const Component = ({width, height, isstatic, children}) => {
+const Component = ({width, height, isstatic, game, children}) => {
     return (
-        <Container style={{ width: width, height: height }} isstatic={isstatic}>
+        <Container style={{ width: width, height: height }} 
+            isstatic={isstatic} id={game ? 'game-container' : ''}>
             {children}
         </Container>
     );

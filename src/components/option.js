@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 const Container = styled.div`
     width: auto;
@@ -45,7 +45,7 @@ const Component = ({option}) => {
     const [current, setCurrent] = useState(option.current);
 
     const change = (value) => {
-        if(current == value) return;
+        if(current === value) return;
         option.current = value;
         setCurrent(value);
     }
@@ -56,13 +56,13 @@ const Component = ({option}) => {
             <Options>
                 {option.options.map((item, key) => 
                     <div key={key}>
-                        {current == item.value &&
+                        {current === item.value &&
                             <Option onClick={()=>change(item.value)}
                                 selected={true}>
                                 <span>{item.display}</span>
                             </Option>
                         }
-                        {current != item.value &&
+                        {current !== item.value &&
                             <Option onClick={()=>change(item.value)}
                                 selected={false}>
                                 <span>{item.display}</span>

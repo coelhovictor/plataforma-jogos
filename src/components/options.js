@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 import Option from './option';
 
@@ -54,17 +54,17 @@ const Component = ({showStatus, hide, options, status}) => {
             <Body>
                 <Header>
                     <span>Opções</span>
-                    <b onClick={hide}><i class="fa fa-close"></i></b>
+                    <b onClick={hide}><i className="fa fa-close"></i></b>
                 </Header>
                 <Content>
-                    {status == 0 &&
+                    {status === 0 &&
                         <>
                             {options.map((option, key) => 
                                 <Option key={key} option={option}/>
                             )}
                         </>
                     }
-                    {status != 0 &&
+                    {status !== 0 &&
                         <span>O jogo está em andamento!</span>
                     }
                 </Content>

@@ -19,7 +19,11 @@ const Page = () => {
 
     return (
         <Area>
-            <Container width="100%" height="670px" isstatic={true}>
+            <Container 
+                width="100%" 
+                height="670px" 
+                isstatic={true}
+                game={true}>
                 <View />
             </Container>
             <Back />

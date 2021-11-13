@@ -58,10 +58,10 @@ const View = () => {
     const [showOptions, setShowOptions] = useState(false);
 
     const startGame = () => {
-        if(status != 0) return;
+        if(status !== 0) return;
 
         reset();
-        if(startPlaying() == 0) {
+        if(startPlaying() === 0) {
             setStatus(2); 
             return;
         }
@@ -70,7 +70,7 @@ const View = () => {
 
     const restart = () => {
         reset();
-        if(startPlaying() == 0) {
+        if(startPlaying() === 0) {
             setStatus(2); 
             return;
         }
@@ -79,7 +79,7 @@ const View = () => {
 
     const reset = () => {
 
-        for(var task in tasks) {
+        for(let task in tasks) {
             clearInterval(tasks[task]);
         }
         if(tasks.length > 0) {
@@ -99,10 +99,10 @@ const View = () => {
     }
 
     const player = (x, y) => {
-        if(status != 2) return;
-        if(options[x][y] != "N") return;
-        var winner = bet(x, y, symbol() == 0 ? "X" : "O");
-        if(winner != 0) {
+        if(status !== 2) return;
+        if(options[x][y] !== "N") return;
+        let winner = bet(x, y, symbol() === 0 ? "X" : "O");
+        if(winner !== 0) {
             finish(winner);
             return;
         }
@@ -112,10 +112,10 @@ const View = () => {
     const cpu = () => {
         setStatus(1);
 
-        var timer = setInterval(() => {
-            var index = chooseIndex();
-            var winner = bet(index[0], index[1], symbol() != 0 ? "X" : "O");
-            if(winner != 0) {
+        let timer = setInterval(() => {
+            let index = chooseIndex();
+            let winner = bet(index[0], index[1], symbol() !== 0 ? "X" : "O");
+            if(winner !== 0) {
                 finish(winner);
             } else {
                 setStatus(2);
@@ -127,28 +127,28 @@ const View = () => {
     }
 
     const chooseIndex = () => {
-        var target = [];
+        let target = [];
 
-        var selectGood = [];
-        var selectBad = [];
-        for(var as in checks) {
-            var value = checks[as];
-            var optionGood = 0, optionBad = 0;
-            for(var index in value) {
-                var result = transform(value[index]);
-                var option = options[result[0]][result[1]];
-                if(option == "O") optionGood++;
-                if(option == "X") optionBad++;
+        let selectGood = [];
+        let selectBad = [];
+        for(let as in checks) {
+            let value = checks[as];
+            let optionGood = 0, optionBad = 0;
+            for(let index in value) {
+                let result = transform(value[index]);
+                let option = options[result[0]][result[1]];
+                if(option === "O") optionGood++;
+                if(option === "X") optionBad++;
             }
-            if(optionGood > 0 && optionBad == 0) {
-                if(selectGood.length == 0 || selectGood[0] < optionGood) selectGood = [optionGood, value];
+            if(optionGood > 0 && optionBad === 0) {
+                if(selectGood.length === 0 || selectGood[0] < optionGood) selectGood = [optionGood, value];
             }
-            if(optionBad > 0 && selectGood == 0) {
-                if(selectBad.length == 0 || selectBad[0] < optionBad) selectBad = [optionBad, value];
+            if(optionBad > 0 && selectGood === 0) {
+                if(selectBad.length === 0 || selectBad[0] < optionBad) selectBad = [optionBad, value];
             }
         }
 
-        var select = null;
+        let select = null;
 
         if(selectGood.length > 0) {
             if(selectBad.length > 0 && selectBad[0] > 1 && selectBad[0] > selectGood[0]) {
@@ -158,21 +158,21 @@ const View = () => {
             }
         }
 
-        if(select != null) {
-            for(var one in select) {
-                var index = transform(select[one]);
-                var option = options[index[0]][index[1]];
-                if(option == "N") {
+        if(select !== null) {
+            for(let one in select) {
+                let index = transform(select[one]);
+                let option = options[index[0]][index[1]];
+                if(option === "N") {
                     target = index; 
                     break;
                 }
             }
         }
 
-        while(target.length == 0) {
-            var x = Math.floor(Math.random() * 3);
-            var y = Math.floor(Math.random() * 3);
-            if(options[x][y] == "N") {
+        while(target.length === 0) {
+            let x = Math.floor(Math.random() * 3);
+            let y = Math.floor(Math.random() * 3);
+            if(options[x][y] === "N") {
                 target = [x, y];
                 break;
             }
@@ -181,7 +181,7 @@ const View = () => {
     }
 
     const bet = (x, y, option) => {
-        var next = [];
+        let next = [];
         next.push(...options);
         next[x][y] = option;
         setOptions(next);
@@ -190,31 +190,31 @@ const View = () => {
     }
 
     const checkWinner = () => {
-        var countN = 0;
+        let countN = 0;
 
-        for(var as in checks) {
-            var target = checks[as];
-            var countX = 0, countO = 0;
-            for(var index in target) {
-                var result = transform(target[index]);
-                var option = options[result[0]][result[1]];
-                if(option == "X") countX++;
-                if(option == "O") countO++;
-                if(option == "N") countN++;
+        for(let as in checks) {
+            let target = checks[as];
+            let countX = 0, countO = 0;
+            for(let index in target) {
+                let result = transform(target[index]);
+                let option = options[result[0]][result[1]];
+                if(option === "X") countX++;
+                if(option === "O") countO++;
+                if(option === "N") countN++;
             }
-            if(countX >= 3) return symbol() == 0 ? 1 : 2;
-            if(countO >= 3) return symbol() == 1 ? 1 : 2;
+            if(countX >= 3) return symbol() === 0 ? 1 : 2;
+            if(countO >= 3) return symbol() === 1 ? 1 : 2;
         }
 
-        if(countN == 0) return 3;
+        if(countN === 0) return 3;
 
         return 0;
     }
 
     const transform = (value) => {
 
-        var target = value;
-        var x = 0, y = 0;
+        let target = value;
+        let x = 0, y = 0;
         while((target - 2) > 0) {
             x++;
             target -= (2 * x) + x;
@@ -224,7 +224,7 @@ const View = () => {
             }
 
         }
-        if(x == 0) {
+        if(x === 0) {
             y = target;
         }
 
@@ -246,7 +246,7 @@ const View = () => {
                 setScoreDraw(scoreDraw + 1);
                 break;
         }
-        var timer = setInterval(() => {
+        let timer = setInterval(() => {
             clear();
             clearInterval(timer);
         }, 1500);
@@ -274,12 +274,12 @@ const View = () => {
                     options={()=>setShowOptions(true)}/>
                 <Container>
                     <Indicator>
-                        {status == 0 && <span>Aguardando iniciar</span>}
-                        {status == 1 && <span>Vez de <b>CPU</b></span>}
-                        {status == 2 && <span>Vez de <b>PLAYER</b></span>}
-                        {status == 4 && <span><b>PLAYER</b> ganhou!</span>}
-                        {status == 5 && <span><b>CPU</b> ganhou!</span>}
-                        {status == 6 && <span>Deu <b>EMPATE</b>!</span>}
+                        {status === 0 && <span>Aguardando iniciar</span>}
+                        {status === 1 && <span>Vez de <b>CPU</b></span>}
+                        {status === 2 && <span>Vez de <b>PLAYER</b></span>}
+                        {status === 4 && <span><b>PLAYER</b> ganhou!</span>}
+                        {status === 5 && <span><b>CPU</b> ganhou!</span>}
+                        {status === 6 && <span>Deu <b>EMPATE</b>!</span>}
                     </Indicator>
                     <Body>
                         <tbody>
@@ -287,9 +287,9 @@ const View = () => {
                                 <Row key={key}>
                                     {options[key].map((item, itemKey) =>
                                         <Column onClick={()=>player(key, itemKey, 1)} key={itemKey}>
-                                            {item == "X"
+                                            {item === "X"
                                                 && <Option><i className="fa fa-times" style={{ fontSize: '60px' }}></i></Option>}
-                                            {item == "O"
+                                            {item === "O"
                                                 && <Option><i className="far fa-circle"></i></Option>}
                                         </Column>
                                     )}

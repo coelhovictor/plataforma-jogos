@@ -15,7 +15,6 @@ import {
 const View = () => {
 
     const [options] = useState(["1", "B", "2", "D", "5", "F", "7", "H", "9"]);
-    const [settings] = useState([]);
 
     const [status, setStatus] = useState(0);
     const [locked, setLocked] = useState(true);
@@ -27,14 +26,14 @@ const View = () => {
     const [tasks, setTasks] = useState([]);
 
     const startGame = () => {
-        if(status != 0) return;
+        if(status !== 0) return;
 
         reset();
         sequence(0);
     }
 
     const restart = () => {
-        if(status == 0) return;
+        if(status === 0) return;
 
         reset();
         sequence(0);
@@ -42,7 +41,7 @@ const View = () => {
 
     const reset = () => {
 
-        for(var task in tasks) {
+        for(let task in tasks) {
             clearInterval(tasks[task]);
         }
         if(tasks.length > 0) {
@@ -61,11 +60,11 @@ const View = () => {
         setCurrentBetIndex(0);
         currentSequence.length = 0;
         setLocked(true);
-        var count = 0;
-        var timer = setInterval(() => {
+        let count = 0;
+        let timer = setInterval(() => {
             if(count >= (2 + (level * 2))) {
                 clearInterval(timer);
-                var timer2 = setInterval(() => {
+                let timer2 = setInterval(() => {
                     setStatus(2);
                     setLocked(false);
                     setCurrentSequence(currentSequence);
@@ -73,7 +72,7 @@ const View = () => {
                 }, 1000);
                 tasks.push(timer2);
             } else {
-                var sortedIndex = sortIndex();
+                let sortedIndex = sortIndex();
                 bless(sortedIndex);
                 count++;
             }
@@ -82,13 +81,13 @@ const View = () => {
     }
 
     const sortIndex = () => {
-        var got = false;
-        var target = 0;
+        let got = false;
+        let target = 0;
         while(!got) {
-            var value = Math.floor(Math.random() * 8);
+            let value = Math.floor(Math.random() * 8);
             if(currentSequence.length > 0) {
-                var last = currentSequence[ currentSequence.length - 1 ];
-                if(last != value) {
+                let last = currentSequence[ currentSequence.length - 1 ];
+                if(last !== value) {
                     target = value;
                     got = true;
                 }
@@ -103,7 +102,7 @@ const View = () => {
 
     const bless = (index) => {
         setCurrentBless(index);
-        var timer = setInterval(() => {
+        let timer = setInterval(() => {
             setCurrentBless(-1);
             clearTimeout(timer);
         }, 500);
@@ -114,14 +113,14 @@ const View = () => {
       if(locked) return;
       
       setLocked(true);
-      var timer = setInterval(() => {
+      let timer = setInterval(() => {
             setLocked(false);
           
-            var answer = currentSequence[currentBetIndex]; 
-            if(answer == index) {
-                var next = currentBetIndex + 1;
+            let answer = currentSequence[currentBetIndex]; 
+            if(answer === index) {
+                let next = currentBetIndex + 1;
                 setCurrentBetIndex(next);
-                if(next == currentSequence.length) {
+                if(next === currentSequence.length) {
                     win();
                 }
             } else {
@@ -140,7 +139,7 @@ const View = () => {
         if(nextRecord > scoreRecorde) setScoreRecord(nextRecord);
         setLocked(true);
         setStatus(4);
-        var timer = setInterval(() => {
+        let timer = setInterval(() => {
             sequence(score + 1);
             clearInterval(timer);
         }, 2000);
@@ -151,7 +150,7 @@ const View = () => {
         setScore(0);
         setLocked(true);
         setStatus(3);
-        var timer = setInterval(() => {
+        let timer = setInterval(() => {
             reset();
             clearInterval(timer);
         }, 2000);
@@ -173,17 +172,17 @@ const View = () => {
             <Area>
                 <Container>
                     <Header>
-                        {status == 0 && "AGUARDANDO"}
-                        {status == 1 && "DECORANDO"}
-                        {status == 2 && "VAI!"}
-                        {status == 3 && "ERROU!!"}
-                        {status == 4 && "ACERTOU!!"}
+                        {status === 0 && "AGUARDANDO"}
+                        {status === 1 && "DECORANDO"}
+                        {status === 2 && "VAI!"}
+                        {status === 3 && "ERROU!!"}
+                        {status === 4 && "ACERTOU!!"}
                     </Header>
                     <Options>
                         {options.map((item, key) =>
                             <div key={key}>
-                                {currentBless == key && <Option bless={true} onClick={() => bet(key)}>{item}</Option>}
-                                {currentBless != key && <Option bless={false} onClick={() => bet(key)}>{item}</Option>}
+                                {currentBless === key && <Option bless={true} onClick={() => bet(key)}>{item}</Option>}
+                                {currentBless !== key && <Option bless={false} onClick={() => bet(key)}>{item}</Option>}
                             </div>
                         )}
                     </Options>

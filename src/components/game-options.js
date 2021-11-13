@@ -1,5 +1,6 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Container = styled.div`
     width: 100%;
@@ -45,6 +46,10 @@ const Buttons = styled.nav`
     li:hover {
         color: var(--color-white);
     }
+
+    @media (max-width:600px) {
+        font-size: 22px;
+    }  
 `;
 
 const Component = ({title, play, restart, stop, options}) => {
@@ -57,6 +62,11 @@ const Component = ({title, play, restart, stop, options}) => {
                     <li onClick={restart}  title="Reiniciar"><i className="fa fa-refresh"></i></li>
                     <li onClick={stop}  title="Parar"><i className="fa fa-stop"></i></li>
                     {options && <li onClick={options} title="Opções"><i className="fa fa-bars"></i></li>}
+                    <Link to="/">
+                        <li title="Voltar" id="option-exit" style={{ color: 'var(--color-gray)', display: 'none' }}>
+                            <i className="fa fa-close"></i>
+                        </li>
+                    </Link>
                 </ul>
             </Buttons>
         </Container>

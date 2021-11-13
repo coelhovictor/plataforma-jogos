@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Back = styled.div`
@@ -21,7 +21,7 @@ const Component = () => {
     return (
         <Back>
             <Link to="/" style={{ color: 'var(--color-gray)' }}>
-                <i class="fas fa-undo-alt"></i>
+                <i className="fas fa-undo-alt"></i>
                 Voltar para o Início
             </Link>
         </Back>

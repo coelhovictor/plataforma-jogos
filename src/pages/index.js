@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
-import Container from '../components/container';
 import GameCard from '../components/game-card';
-import Scoreleaders from '../components/scoreleaders';
 
 const Area = styled.div`
     width: 100%;
@@ -26,19 +24,6 @@ const Cards = styled.div`
     @media(max-width: 800px) {
         grid-gap: 40px;
     }
-
-    /*margin-right: 5%;
-
-    @media(max-width: 1200px) {
-        width: 50%;
-    }
-
-    @media(max-width: 800px) {
-        width: 100%;
-        margin-right: 0px;
-        margin-bottom: 60px;
-    }*/
-
 `;
 
 const Home = () => {
@@ -52,6 +37,7 @@ const Home = () => {
             <Cards>
                 <GameCard name="Repetição" route="/repeticao" image="/imgs/simon.jpg"/>
                 <GameCard name="TicTacToe" route="/tictactoe" image="/imgs/tictactoe.png"/>
+                <GameCard name="Snake" route="/snake" image="/imgs/snake.png"/>
             </Cards>
         </Area>
     );

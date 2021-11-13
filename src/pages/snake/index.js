@@ -14,7 +14,7 @@ const Area = styled.div`
 const Page = () => {
 
     useEffect(() => {
-        document.title = "Repetição | Plataforma de Jogos";
+        document.title = "Snake | Plataforma de Jogos";
     });
 
     return (
