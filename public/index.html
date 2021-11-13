@@ -1,31 +1,42 @@
+<!--Desenvolvido por VictorCoelho-->
+<!--https://github.com/CoelhoVictor-->
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#00CBFF" />
-    <meta
-      name="description"
-      content="Plataforma de Jogos"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Plataforma de Jogos</title>
-  </head>
-  <body>
-    <div class="bar" style="position: fixed;"></div>
-    <header>
-      <span>Plataforma de Jogos</span>
-    </header>
-    <main>
-      <div id="root">
-      </div>
-    </main>
-    <footer>
-      <span>Desenvolvido por VictorCoelho</span>
-    </footer>
-    <div class="bar"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="stylesheet" href="%PUBLIC_URL%/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#00CBFF" />
+  <meta name="description" content="Plataforma de Jogos" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>Plataforma de Jogos</title>
+</head>
+
+<body>
+  <div class="bar" style="position: fixed;"></div>
+  <header>
+    <b><i class="fas fa-gamepad"></i></b>
+    <span>Plataforma de Jogos</span>
+  </header>
+  <main>
+    <div id="root">
+    </div>
+  </main>
+  <footer>
+    <span>
+      Desenvolvido por VictorCoelho
+    </span>
+    <span class="version">
+      <a href="https://github.com/CoelhoVictor"><i class="fab fa-github"></i> GitHub</a>
+      <i class="fas fa-code-branch"></i> v1.1.0
+    </span>
+  </footer>
+
+  <div class="animation"></div>
+</body>
+
 </html>
