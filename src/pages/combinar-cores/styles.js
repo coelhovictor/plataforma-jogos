@@ -23,7 +23,7 @@ export const Body = styled.div`
 `;
 
 export const Stack = styled.div`
-    width: 50px;
+    width: auto;
     height: 300px;
     display: flex;
     flex-direction: column;
@@ -59,15 +59,28 @@ export const Stack = styled.div`
                 break;
         }
     }}
+
+    @media (max-width:600px) {
+        height: 250px;
+        padding: 10px;
+    }  
+    @media (max-width:400px) {
+        height: 185px;
+        padding: 5px;
+    }  
 `;
 
 export const Block = styled.div`
     user-select: none;
-    width: 100%;
+    width: 50px;
     height: 50px;
     margin-bottom: 12px;
     color: white;
     border-radius: 50%;
+
+    :hover {
+        opacity: ${(props)=>props.isDragDisabled ? 1 : .4}
+    }
 
     ${(props)=>{
         switch (props.type) {
@@ -95,4 +108,14 @@ export const Block = styled.div`
                 break;
         }
     }}
+
+    @media (max-width:600px) {
+        width: 40px;
+        height: 40px;
+    }  
+    @media (max-width:400px) {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 8px;
+    }  
 `;

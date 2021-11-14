@@ -197,6 +197,7 @@ const View = () => {
                                                                 return (
                                                                 <Block
                                                                     type={item.type}
+                                                                    isDragDisabled={index !== 0 || status !== 1}
                                                                     snapshot={snapshot}
                                                                     ref={provided.innerRef}
                                                                     {...provided.draggableProps}
@@ -204,7 +205,7 @@ const View = () => {
                                                                     style={{
                                                                         ...provided.draggableProps.style,
                                                                         left: "0 !important",
-                                                                        top: "0 !important"
+                                                                        top: "0 !important",
                                                                     }}>
                                                                 </Block>
                                                                 );
