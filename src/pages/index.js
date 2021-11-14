@@ -38,6 +38,7 @@ const Home = () => {
                 <GameCard name="Repetição" route="/repeticao" image="/imgs/simon.jpg"/>
                 <GameCard name="TicTacToe" route="/tictactoe" image="/imgs/tictactoe.png"/>
                 <GameCard name="Snake" route="/snake" image="/imgs/snake.png"/>
+                <GameCard name="Combinar Cores" route="/combinar-cores" image="/imgs/combinar-cores.png"/>
             </Cards>
         </Area>
     );
