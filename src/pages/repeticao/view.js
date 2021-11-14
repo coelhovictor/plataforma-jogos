@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import GameOptions from '../../components/game-options';
+import GameScore from '../../components/game-score';
 
 import { 
     Area,
@@ -164,12 +165,12 @@ const View = () => {
 
     return (
         <>
-            <GameOptions 
-                title="Repetição" 
-                play={()=>startGame()}
-                restart={()=>restart()}
-                stop={()=>reset()}/>
             <Area>
+                <GameOptions 
+                    title="Repetição" 
+                    play={()=>startGame()}
+                    restart={()=>restart()}
+                    stop={()=>reset()}/>
                 <Container>
                     <Header>
                         {status === 0 && "AGUARDANDO"}
@@ -197,6 +198,13 @@ const View = () => {
                         </Score>
                     </Footer>
                 </Container>
+                <GameScore 
+                    options={{  
+                        items: [
+                            { title: "Score", icon: "fas fa-trophy", value: score },
+                            { title: "Recorde", icon: "fas fa-medal", value: scoreRecorde },
+                        ]
+                    }}/>
             </Area>
         </>
     );

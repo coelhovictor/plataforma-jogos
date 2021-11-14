@@ -3,6 +3,7 @@ import useKey from 'react-use/esm/useKey'
 
 import SwipeContent from '../../components/swipe-content';
 import GameOptions from '../../components/game-options';
+import GameScore from '../../components/game-score';
 import Snake from './_snake';
 
 import { 
@@ -345,6 +346,13 @@ const View = () => {
                         </div>
                     </Score>
                 </Container>
+                <GameScore 
+                    options={{  
+                        items: [
+                            { title: "Score", icon: "fas fa-trophy", value: scoreRef.current },
+                            { title: "Recorde", icon: "fas fa-medal", value: scoreRef.current }
+                        ]
+                    }}/>
             </Area>
         </SwipeContent>
     );

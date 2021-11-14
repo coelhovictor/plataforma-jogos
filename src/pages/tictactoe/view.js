@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import GameOptions from '../../components/game-options';
+import GameScore from '../../components/game-score';
 import Options from '../../components/options';
 
 import { 
@@ -312,6 +313,13 @@ const View = () => {
                         </div>
                     </Score>
                 </Container>
+                <GameScore 
+                    options={{  
+                        items: [
+                            { title: "Player", icon: "fas fa-trophy", value: scorePlayer },
+                            { title: "CPU", icon: "fas fa-robot", value: scoreCPU }
+                        ]
+                    }}/>
                 <Options 
                     showStatus={showOptions} 
                     hide={()=>setShowOptions(false)} 

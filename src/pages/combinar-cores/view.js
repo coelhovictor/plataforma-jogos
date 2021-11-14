@@ -3,6 +3,7 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import uuid from "uuid/v4";
 
 import GameOptions from '../../components/game-options';
+import GameScore from '../../components/game-score';
 
 import { 
     Area,
@@ -15,6 +16,8 @@ import {
 const View = () => {
 
     const [status, setStatus] = useState(0);
+    const [score, setScore] = useState(0);
+    const [moves, setMoves] = useState(0);
 
     const Size = {
         columns: 5,
@@ -24,16 +27,18 @@ const View = () => {
 
     const startGame = () => {
         if(status === 1) return;
+        reset();
         setStatus(1);
     }
 
     const restart = () => {
         reset();
-        startGame();
+        setStatus(1);
     }
 
     const reset = () => {
         setStatus(0);
+        setMoves(0);
         if(status !== 0) setColumns(setupColumns());
     }
 
@@ -79,7 +84,10 @@ const View = () => {
         for(let item in nColumns) {
             if(!nColumns[item].full) allFull = false;
         }
-        if(allFull) setStatus(2);
+        if(allFull) {
+            setStatus(2);
+            setScore(score + 1);
+        }
     }
 
     const checkFull = (items) => {
@@ -145,11 +153,14 @@ const View = () => {
           }
         };
       }
+      setMoves(moves + 1);
       setColumns(nColumns);
       checkWinner(nColumns);
     };
 
     useEffect(() => {
+        reset();
+        setScore(0);
     }, []);
 
     return (
@@ -158,7 +169,6 @@ const View = () => {
                 <GameOptions 
                     title="Combinar Cores"
                     play={()=>startGame()}
-                    restart={()=>restart()}
                     stop={()=>reset()}/>
                 <Container>
                     <Body>
@@ -214,6 +224,13 @@ const View = () => {
                         </DragDropContext>
                         </Body>
                 </Container>
+                <GameScore 
+                    options={{  
+                        items: [
+                            { title: "Score", icon: "fas fa-trophy", value: score },
+                            { title: "Movimentos", icon: "fas fa-expand-arrows-alt", value: moves }
+                        ]
+                    }}/>
             </Area>
         </>
     );
