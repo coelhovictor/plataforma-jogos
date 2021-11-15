@@ -8,9 +8,7 @@ import {
     Container,
     Header,
     Options,
-    Option,
-    Footer,
-    Score
+    Option
 } from './styles';
 
 const View = () => {
@@ -187,7 +185,7 @@ const View = () => {
                             </div>
                         )}
                     </Options>
-                    <Footer>
+                    {/*<Footer>
                         <Score>
                             <b>{score}</b>
                             <span>ATUAL</span>
@@ -196,7 +194,7 @@ const View = () => {
                             <b>{scoreRecorde}</b>
                             <span>RECORDE</span>
                         </Score>
-                    </Footer>
+                    </Footer>*/}
                 </Container>
                 <GameScore 
                     options={{  

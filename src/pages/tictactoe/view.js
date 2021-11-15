@@ -11,8 +11,7 @@ import {
     Option,
     Row,
     Column,
-    Indicator,
-    Score,
+    Indicator
 } from './styles';
 
 const View = () => {
@@ -298,7 +297,7 @@ const View = () => {
                             )}
                         </tbody>
                     </Body>
-                    <Score>
+                    {/*<Score>
                         <div>
                             <b>{scorePlayer}</b>
                             <span>PLAYER</span>
@@ -311,7 +310,7 @@ const View = () => {
                             <b>{scoreCPU}</b>
                             <span>CPU</span>
                         </div>
-                    </Score>
+                    </Score>*/}
                 </Container>
                 <GameScore 
                     options={{  

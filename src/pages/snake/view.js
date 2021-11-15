@@ -9,7 +9,6 @@ import Snake from './_snake';
 import { 
     Area,
     Container,
-    Score,
     Body,
     Row,
     Spot,
@@ -335,7 +334,7 @@ const View = () => {
                             </>
                         }
                     </Body>
-                    <Score>
+                    {/*<Score>
                         <div>
                             <b>{scoreRef.current}</b>
                             <span>SCORE</span>
@@ -344,7 +343,7 @@ const View = () => {
                             <b>{recordeRef.current}</b>
                             <span>RECORDE</span>
                         </div>
-                    </Score>
+                    </Score>*/}
                 </Container>
                 <GameScore 
                     options={{  
