@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import uuid from "uuid/v4";
+import { uuid } from "uuidv4";
 
 import GameOptions from '../../components/game-options';
 import GameScore from '../../components/game-score';
