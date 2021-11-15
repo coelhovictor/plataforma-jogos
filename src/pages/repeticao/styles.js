@@ -6,6 +6,7 @@ export const Area = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     background: linear-gradient(to right, #0f2027, #2c5364, #0f2027);
 `;
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import GameOptions from '../../components/game-options';
+import GameScore from '../../components/game-score';
 import Options from '../../components/options';
 
 import { 
@@ -10,8 +11,7 @@ import {
     Option,
     Row,
     Column,
-    Indicator,
-    Score,
+    Indicator
 } from './styles';
 
 const View = () => {
@@ -297,7 +297,7 @@ const View = () => {
                             )}
                         </tbody>
                     </Body>
-                    <Score>
+                    {/*<Score>
                         <div>
                             <b>{scorePlayer}</b>
                             <span>PLAYER</span>
@@ -310,8 +310,15 @@ const View = () => {
                             <b>{scoreCPU}</b>
                             <span>CPU</span>
                         </div>
-                    </Score>
+                    </Score>*/}
                 </Container>
+                <GameScore 
+                    options={{  
+                        items: [
+                            { title: "Player", icon: "fas fa-trophy", value: scorePlayer },
+                            { title: "CPU", icon: "fas fa-robot", value: scoreCPU }
+                        ]
+                    }}/>
                 <Options 
                     showStatus={showOptions} 
                     hide={()=>setShowOptions(false)} 

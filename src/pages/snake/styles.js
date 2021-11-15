@@ -7,7 +7,7 @@ export const Area = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
-    background: linear-gradient(to right, #201b15, #855b2c, #201b15);
+    background: linear-gradient(to right, #18281f,#203c1d,#18281f);
 `;
 
 export const Container = styled.div`

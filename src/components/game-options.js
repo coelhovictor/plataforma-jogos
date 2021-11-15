@@ -17,6 +17,10 @@ const Title = styled.span`
     color: var(--color-gray);
     font-size: 16px;
     margin-left: 20px;
+
+    @media (max-width:600px) {
+        font-size: 14px;
+    }  
 `;
 
 const Buttons = styled.nav`
@@ -58,9 +62,9 @@ const Component = ({title, play, restart, stop, options}) => {
             <Title title={title}><i className="fa fa-play"></i> {title}</Title>
             <Buttons>
                 <ul>
-                    <li onClick={play} title="Iniciar"><i className="fa fa-play"></i></li>
-                    <li onClick={restart}  title="Reiniciar"><i className="fa fa-refresh"></i></li>
-                    <li onClick={stop}  title="Parar"><i className="fa fa-stop"></i></li>
+                    {play && <li onClick={play} title="Iniciar"><i className="fa fa-play"></i></li>}
+                    {restart && <li onClick={restart}  title="Reiniciar"><i className="fa fa-refresh"></i></li>}
+                    {stop && <li onClick={stop}  title="Parar"><i className="fa fa-stop"></i></li>}
                     {options && <li onClick={options} title="Opções"><i className="fa fa-bars"></i></li>}
                     <Link to="/">
                         <li title="Voltar" id="option-exit" style={{ color: 'var(--color-gray)', display: 'none' }}>

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 import GameOptions from '../../components/game-options';
+import GameScore from '../../components/game-score';
 
 import { 
     Area,
     Container,
     Header,
     Options,
-    Option,
-    Footer,
-    Score
+    Option
 } from './styles';
 
 const View = () => {
@@ -164,12 +163,12 @@ const View = () => {
 
     return (
         <>
-            <GameOptions 
-                title="Repetição" 
-                play={()=>startGame()}
-                restart={()=>restart()}
-                stop={()=>reset()}/>
             <Area>
+                <GameOptions 
+                    title="Repetição" 
+                    play={()=>startGame()}
+                    restart={()=>restart()}
+                    stop={()=>reset()}/>
                 <Container>
                     <Header>
                         {status === 0 && "AGUARDANDO"}
@@ -186,7 +185,7 @@ const View = () => {
                             </div>
                         )}
                     </Options>
-                    <Footer>
+                    {/*<Footer>
                         <Score>
                             <b>{score}</b>
                             <span>ATUAL</span>
@@ -195,8 +194,15 @@ const View = () => {
                             <b>{scoreRecorde}</b>
                             <span>RECORDE</span>
                         </Score>
-                    </Footer>
+                    </Footer>*/}
                 </Container>
+                <GameScore 
+                    options={{  
+                        items: [
+                            { title: "Score", icon: "fas fa-trophy", value: score },
+                            { title: "Recorde", icon: "fas fa-medal", value: scoreRecorde },
+                        ]
+                    }}/>
             </Area>
         </>
     );
