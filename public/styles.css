@@ -195,6 +195,9 @@ footer .version {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
   }
+  main {
+    width: 80%;
+  }
   #game-container {
     width: 100% !important;
     height: 98% !important;
